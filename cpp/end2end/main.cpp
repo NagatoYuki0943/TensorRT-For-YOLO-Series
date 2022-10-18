@@ -339,7 +339,7 @@ int main(int argc, char** argv) {
     Yolo yolo(model_path);
     cv::Mat img;
     img = cv::imread(image_path);
-    // warmup 
+    // warmup
     for (int num =0; num < 10; num++) {
       yolo.Infer(img.cols, img.rows, img.channels(), img.data, Boxes, ClassIndexs, BboxNum);
     }

@@ -4,10 +4,10 @@
 
 int main(int argc, char** argv) {
     std::string engine_file_path = "";
-    if (argc == 4 && std::string(argv[2]) == "-i") 
+    if (argc == 4 && std::string(argv[2]) == "-i")
     {
         engine_file_path = argv[1];
-    } 
+    }
     else {
         std::cerr << "arguments not right!" << std::endl;
         std::cerr << "./yolo ../model_trt.engine -i ../*.jpg  // deserialize file and run inference" << std::endl;

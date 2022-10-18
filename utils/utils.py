@@ -40,7 +40,7 @@ class BaseEngine(object):
                 self.inputs.append({'host': host_mem, 'device': device_mem})
             else:
                 self.outputs.append({'host': host_mem, 'device': device_mem})
-                
+
 
     def infer(self, img):
         self.inputs[0]['host'] = np.ravel(img)
@@ -59,7 +59,7 @@ class BaseEngine(object):
 
         data = [out['host'] for out in self.outputs]
         return data
-    
+
     def detect_video(self, video_path, conf=0.5, end2end=False):
         cap = cv2.VideoCapture(video_path)
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
@@ -131,7 +131,7 @@ class BaseEngine(object):
         boxes_xyxy /= ratio
         dets = multiclass_nms(boxes_xyxy, scores, nms_thr=0.45, score_thr=0.1)
         return dets
-    
+
     def get_fps(self):
         # warmup
         import time
@@ -211,7 +211,7 @@ def preproc(image, input_size, mean, std, swap=(2, 0, 1)):
         interpolation=cv2.INTER_LINEAR,
     ).astype(np.float32)
     padded_img[: int(img.shape[0] * r), : int(img.shape[1] * r)] = resized_img
-    # if use yolox set 
+    # if use yolox set
     # padded_img = padded_img[:, :, ::-1]
     # padded_img /= 255.0
     padded_img = padded_img[:, :, ::-1]
